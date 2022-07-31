@@ -1,0 +1,180 @@
+header{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 2rem 1.5rem;
+    align-items: center;
+
+    .logo{
+        margin-right: auto;
+        @include big{
+            order: 1;
+        }
+    }
+
+    @include big{
+        padding: 2rem 9rem;
+    }
+
+    @include md{
+        @include px(3rem);
+    }
+}
+
+.navigation{
+    &.slide{
+        transition: transform .8s ease;
+    }
+    @include mobile{
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        position: absolute;
+        inset: 0;
+        z-index: 100;
+        padding-top: 2rem;
+        background-color: hsla(229, 31%, 21%, 90%);
+        &[aria-hidden=false]{
+            & ~ .sidenav-toggler, & ~ .logo{
+                display: none;
+            }
+            transform: translateY(0%);
+        }
+        &[aria-hidden=true]{
+            transform: translateY(-100%);
+        }
+
+        ul{
+            margin-top: 1rem;
+
+            .nav-link{
+                border-top: 1px solid $grey-blue;
+                padding-top: 1.5rem;
+                padding-bottom: 1.5rem;
+                text-align: center;
+
+                &:nth-last-of-type(1){
+                    border-bottom: 1px solid $grey-blue;
+                }
+    
+                a{
+                    color: white;
+                    font-weight: value($font-weight, lt);
+                    font-size: 1.25rem;
+                    letter-spacing: 2px;
+                    text-transform: uppercase;
+                }
+            }
+        }
+
+        .login{
+            a{
+                display: block;
+                width: 100%;
+                text-align: center;
+                border: 2px solid white;
+                padding: 0.6rem 1rem;
+                border-radius: .25rem;
+                text-transform: uppercase;
+                color: white;
+                letter-spacing: 2px;
+                font-size: 1.25rem;
+            }
+        }
+
+        .socials{
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+            margin-top: auto;
+            margin-bottom: 4rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    @include big{
+        display: flex;
+        gap: 2rem;
+        order: 2;
+
+        ul{
+            display: flex;
+            gap: 2rem;
+
+            .nav-link{
+                a{
+                    text-transform: uppercase;
+                    letter-spacing: 2px;
+                    font-size: 12px;
+                    color: $dark-blue;
+                    font-weight: value($font-weight, bd);
+                    transition: color .5s;
+
+                    &:hover{
+                        color: $soft-red;
+                    }
+                }
+            }
+        }
+
+        .login{
+            a{
+                background-color: $soft-red;
+                padding: .75rem 2rem;
+                border-radius: .5rem;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                color: white;
+                font-size: 14px;
+                box-shadow: 0 2px 5px 1px $grey-blue;
+                transition: background-color 1s;
+                transition: color .5s;
+
+                &:hover{
+                    @include px(1.9rem);
+                    border: 2px solid $soft-red;
+                    background-color: inherit;
+                    color: $soft-red;
+                }
+            }
+        }
+
+        .control{
+            display: none;
+        }
+
+        .socials{
+            display: none;
+        }
+    }
+}
+
+.navigation .control{
+    @include mobile {display: flex;}
+    justify-content: space-between;
+    align-items: center;
+
+    .logo{
+        transform: scale(1.3);
+        transform-origin: left;
+
+        @include md{
+            transform: scale(1);
+        }
+    }
+    .close-btn{
+        transform: scale(1.3);
+        transform-origin: right;
+    }
+}
+
+.sidenav-toggler{
+    display: inline-block;
+
+    @include big{
+        display: none;
+    }
+}

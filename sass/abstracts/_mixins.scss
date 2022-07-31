@@ -1,0 +1,202 @@
+@mixin big{
+    @media screen and (min-width: 767px){
+        @content;
+    }
+}
+
+@mixin mobile{
+    @media screen and (max-width: 768px){
+        @content;
+    }
+}
+
+@mixin md {
+    @media screen and (max-width: 1140px) {
+        @content;
+    }
+}
+
+@mixin small {
+    @media screen and (max-width: 540px) {
+        @content;
+    }
+}
+
+@function value($arr, $val){
+    @return map-get($map: $arr, $key: $val);
+}
+
+@mixin no-border($rad){
+    outline: none;
+    border: none;
+    border-radius: $rad;
+}
+
+@mixin blob {
+    --width: 55rem;
+
+    @media (max-width: 1400px) {
+        --width: 48rem;
+    }
+
+    @media (max-width: 1200px) {
+        --width: 47rem;
+    }
+
+    @media (max-width: 1118px) {
+        --width: 46rem;
+    }
+
+    @include mobile{
+        --width: 43rem;
+    }
+
+    @media (max-width: 620px) {
+        --width: 42rem;
+    }
+
+    @media (max-width: 540px) {
+        --width: 40rem;
+    }
+
+    $height: calc(var(--width) / 3);
+    $border-rad: calc($height / 2);
+    content: '';
+    width: var(--width);
+    height: $height;
+    border-radius: $border-rad;
+    background-color: $soft-blue;
+}
+
+@mixin blob-stuff {
+    @media (max-width: 1000px) {
+        transform: translate(60%, 0%);
+        bottom: 5%;
+    }
+
+    @include mobile{
+        transform: translate(15%, 0%);
+        bottom: 38%;
+    }
+
+    @media (max-width: 620px) {
+        transform: translate(15%, 0%);
+        bottom: 37%;
+    }
+
+    @media (max-width: 540px) {
+        transform: translate(50%, 0%);
+        bottom: 50%;
+    }
+}
+
+@mixin px($val){
+    padding-left: $val;
+    padding-right: $val;
+}
+
+@mixin py($val){
+    padding-top: $val;
+    padding-bottom: $val;
+}
+
+@mixin mx($val){
+    margin-left: $val;
+    margin-right: $val;
+}
+
+@mixin my($val){
+    margin-top: $val;
+    margin-top: $val;
+}
+
+@mixin soft-blue-btn($rad: initial){
+    background-color: $soft-blue;
+    color: white;
+    border-radius: $rad;
+}
+
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+}
+
+@mixin font($size, $weight) {
+    font-size: $size;
+    font-weight: value($font-weight, $weight);
+}
+
+@mixin flex-reset{
+    flex-direction: initial;
+    justify-content: initial;
+    justify-items: initial;
+    align-items: initial;
+    gap: initial;
+}
+
+@mixin text-reset {
+    text-align: initial;
+    vertical-align: initial;
+    line-height: initial;
+}
+
+@mixin width-reset {
+    width: initial;
+    max-width: initial;
+    min-width: initial;
+}
+
+@mixin center-stuff($width: initial) {
+    max-width: $width;
+    width: $width;   
+    @include mx(auto);
+}
+
+@mixin colored-shadow($shadow ,$color: $soft-blue) {
+    box-shadow: $shadow lighten($color: $color, $amount: 30);
+}
+
+@mixin no-top-shadow($y-displacement: .25rem) {
+    position: relative;
+    &::before{
+        /* To remove that annoying top shadow 😪😁. Not really doing anything but illuminating the shadow though 😂 */
+        content: '';
+        position: absolute;
+        top: -$y-displacement;
+        outline: none;
+        border: none;
+        width: 100%;
+        margin-top: -1px;
+        border-radius: inherit;
+        left: 0;
+        height: $y-displacement;
+        background-color: rgb(255 255 255 / 0.5);
+        mix-blend-mode: lighten;
+    }   
+}
+
+@mixin pseudo-icon($img, $color, $mask: 'true') {
+    @if $mask == "true" {
+        -webkit-mask: url($img);
+        -webkit-mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask: url($img);
+        mask-repeat: no-repeat;
+        background-color: $color;
+        mask-size: cover;   
+    }
+    @else{
+        content: url($img);
+    }
+}
+
+@mixin border-solid($width) {
+    border-width: $width;
+    border-style: solid;
+    border-color: inherit;
+}

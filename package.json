@@ -1,0 +1,20 @@
+{
+  "name": "frontendmentor_bookmark-landing-page",
+  "version": "1.0.0",
+  "description": "![Design preview for the Bookmark landing page coding challenge](./design/desktop-preview.jpg)",
+  "source": "index.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build",
+    "watch-css": "sass ./sass/style.scss ./style.css --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.6.2",
+    "sass": "^1.53.0"
+  },
+  "dependencies": {
+    "gsap-trial": "^3.10.4"
+  }
+}

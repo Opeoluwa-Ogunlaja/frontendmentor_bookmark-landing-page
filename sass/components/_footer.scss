@@ -1,0 +1,85 @@
+footer{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+    @include py(4rem);
+    background-color: $dark-blue;
+
+    @include big{
+        @include px(10rem);
+        @include py(1.25rem);
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+    }
+}
+
+.footer__logo{
+    .logo{
+        transform: scale(1.25);
+        transform-origin: center;
+
+        @include big{
+            transform: scale(1);
+        }
+    }
+}
+
+.footer__navigation{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    a{
+        color: white;
+        @include font(1rem, lt);
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        transition: color .3s linear .2s;
+
+        &:hover{
+            color: $soft-red;
+        }
+
+        @include big{
+            letter-spacing: 2px;
+            @include font(0.8rem, lt);
+        }
+    }
+
+    @include big{
+        flex-direction: row;
+    }
+}
+
+.footer__social-icons{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    @include center-stuff(20%);
+    position: relative;
+    isolation: isolate;
+    align-items: center;
+
+    svg{
+        path{
+            transition: fill .5s;
+        }
+        &:hover{
+            path{
+                fill: $soft-red;
+            }
+        }
+    }
+
+    @include big{
+        margin-top: initial;
+        @include width-reset;
+        @include mx(initial);
+        margin-left: auto;
+        align-items: center;
+        gap: 2rem;
+    }
+}

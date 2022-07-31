@@ -1,0 +1,170 @@
+/**
+* Time for some cleaner code abeg 😂
+* Created some mixins to help my life
+**/
+
+section.browsers{
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-bottom: 10rem;
+
+    @include big{
+    }
+}
+
+/* The Intro to the section */
+.browsers__intro{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    @include big{
+
+    }
+}
+/* Title of the section */
+.browsers__intro--title{
+    color: $dark-blue;
+    @include big{
+        font-size: 2rem;
+    }
+}
+/* Section description text */
+.browsers__intro--desc{
+    color: $grey-blue;
+    white-space: pre-line;
+    line-height: 1.6;
+    font-size: 1rem;
+    overflow: hidden;
+    @include center-stuff(30ch);
+    
+    @include big{
+        white-space: initial;
+        max-width: 50ch;
+    }
+}
+
+/* The cards container */
+.browser__cards{
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    @include px(10%);
+    flex-grow: 1;
+    position: relative;
+    align-items: center;
+    max-width: initial;
+
+    @include big{
+        flex-direction: row;
+        @include px(auto);
+        @include center-stuff(80vw);
+        align-items: initial;
+    }
+
+    @include md{
+        @include center-stuff(95vw);
+        @include px(5%);
+    }
+}
+/* Individual cards */
+.browser__card{
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+    display: flex;
+    border-radius: .5rem;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3rem;
+    min-width: 20rem;
+    max-width: 20rem;
+    @include colored-shadow(0px 5px 10px 1px);
+    @include no-top-shadow(10px);
+    background-image: url(./images/bg-dots.svg);
+    background-repeat: no-repeat;
+    background-size: contain !important;
+    background-position: center 72%;
+
+    @include big{
+        max-width: initial;
+        min-width: initial;
+        @include mx(initial);
+        width: 35%;
+        background-position: center 75%;
+        @for $i from 1 to 4 {
+            &:nth-of-type(#{$i}){
+                margin-top: calc((#{$i} - 1) * 2rem);
+                margin-bottom: calc(((#{$i} - 1) * 2rem) * -1);
+            }
+        }
+    }
+}
+/* The Card content */
+.browser__card--info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    text-align: center;
+
+    img{
+        @include center-stuff(25%);
+
+        @include big{
+            @include center-stuff(35%);
+        }
+    }
+
+    .browser__card--info-text{
+        line-height: 1.7;
+        h3{
+            color: $dark-blue;
+            font-size: 1.25rem;
+            @include big{
+                
+            }
+        }
+    
+        span{
+            color: $grey-blue;
+            @include big{
+                
+            }
+        }
+
+        @include big{
+
+        }
+    }
+
+    @include big{
+
+    }
+}
+/* The cta-button */
+.browser__card--btn{
+    @include center-stuff(80%);
+    padding: 1rem 2rem;
+    @include soft-blue-btn(.5rem);
+    @include colored-shadow(0px 2px 10px 2px);
+    @include no-top-shadow(2px);
+    transition: border .5s linear 10ms;
+    transition: background-color .5s linear 10ms;
+
+    &:hover{
+        @include font(0.8rem, bd);
+        @include center-stuff(90%);
+        @include border-solid(2px);
+        background-color: inherit;
+        color: $soft-blue;
+        border-color: $soft-blue;
+    }
+    
+
+    @include big{
+        font-size: 14px;
+        @include center-stuff(85%);
+    }
+}

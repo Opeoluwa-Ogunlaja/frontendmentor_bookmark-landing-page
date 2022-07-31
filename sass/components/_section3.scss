@@ -1,0 +1,129 @@
+section.accordions{
+    @include px(5%);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    @include big{
+        @include px(10%);
+    }
+}
+
+.accordions__intro{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+
+    .accordions__intro--title{
+        color: $dark-blue;
+        text-align: center;
+        font-size: 1.5rem;
+        @include center-stuff(20ch);
+
+        @include big{
+
+        }
+    }
+
+    .accordions__intro--desc{
+        color: $grey-blue;
+        white-space: pre-line;
+        max-width: 32ch;
+        line-height: 1.6;
+        font-size: 1rem;
+        overflow: hidden;
+        @include center-stuff;
+
+        @include big{
+            white-space: initial;
+            max-width: 50ch;
+        }
+    }
+
+    @include big{
+
+    }
+}
+
+.accordions__container{
+    @include big{
+        @include center-stuff(55%);
+    }
+}
+
+.accordion.collapsed{
+    max-height: calc(52rem);
+    &::after{
+        @include pseudo-icon('./images/icon-arrow.svg', $soft-red);
+        transform: rotateX(180deg);
+    }
+}
+
+.accordion.collapse{
+    max-height: 3.5rem !important;
+    &::after{
+        @include pseudo-icon('./images/icon-arrow.svg', $soft-blue);
+    }
+}
+
+.accordion{
+    @include py(.75rem);
+    border-bottom: 1px solid $grey-blue;
+    position: relative;
+    @include flex-column;
+    overflow: hidden;
+    gap: 1.5rem;
+    cursor: pointer;
+    transition: max-height .5s !important;
+
+    &::after{
+        width: 2rem;
+        height: 2rem;
+        position: absolute;
+        content: '';
+        top: 0;
+        right: 0;
+        // background-clip: text;
+        // -webkit-background-clip: text;
+        @include my(1.75rem);
+        @include mx(.1rem);
+        zoom: 60%;
+        transition: transform .3s ease;
+    }
+
+    &:hover{
+        .accordion__title{
+            color: desaturate($soft-red, 10);
+        }
+    }
+
+    @include big{
+
+    }
+}
+
+.accordion__title{
+    @include py(.5rem);
+    transition: color .3s linear;
+    vertical-align: middle;
+    color: $dark-blue;
+    @include font(1rem, lt);
+
+}
+
+.accordion__content{
+    color: $grey-blue;
+    line-height: 1.7;
+    cursor: auto !important;
+    display: block;
+}
+
+.accordions__cta-btn{
+    @include center-stuff(max-content);
+    padding: 1rem 1.5rem;
+    @include font(1rem, lt);
+    @include soft-blue-btn;
+    border-radius: .5rem;
+}

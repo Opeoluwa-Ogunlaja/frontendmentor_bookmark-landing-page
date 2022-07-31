@@ -1,0 +1,170 @@
+section.contact{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10rem;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    background-color: $soft-blue;
+    text-align: center;
+    @include py(3rem);
+
+    @include big{
+        gap: 2rem;
+    }
+}
+
+.contact__testimonial{
+    color: white;
+    letter-spacing: 3px;
+    @include font(initial, lt);
+    text-transform: uppercase;
+
+    @include big{
+
+    }
+}
+
+.contact__testimonial-desc{
+    text-align: center;
+    color: white;
+    @include font(1.5rem, bd);
+    @include center-stuff(20ch);
+
+    @include big{
+        @include center-stuff(25ch);
+    }
+}
+
+.contact__form{
+    display: flex;
+    flex-direction: column;
+    @include center-stuff(80%);
+    gap: 1rem;
+
+    .contact__form--input-holder{
+        transition: border .2s ease;
+        position: relative;
+        isolation: isolate;
+
+        &::after{
+            transform: translateY(0%);
+            transition: transform .4s ease;
+        }
+
+        &::before{
+            transition: opacity .3s linear;
+            opacity: 0.2;
+        }
+
+        &[aria-errormessage=true]{
+            border: 3px solid $soft-red;
+            border-radius: .25rem;
+            height: max-content;
+            margin-bottom: 2rem;
+            isolation: isolate;
+
+            &::after{
+                @include big{
+                    width: 102%;
+                }
+
+                @include md{
+                    width: 102.5%;
+                }
+
+                position: absolute;
+                background-color: $soft-red;
+                content: "Whoops, make sure its an email";
+                @include mobile{
+                    width: 101.25%;
+                }
+                left: -3px;
+                text-align: start;
+                @include px(1rem);
+                @include py(.25rem);
+                font-style: italic;
+                color: white;
+                font-size: 0.6rem;
+                z-index: -1;
+                bottom: 0;
+                border-bottom-left-radius: .25rem;
+                border-bottom-right-radius: .25rem;
+                transform: translateY(100%);
+            }
+
+            &::before{
+                position: absolute;
+                content: '';
+                width: 2.5rem;
+                height: 2.5rem;
+                right: 0;
+                top: 50%;
+                zoom: 80%;
+                transform: translateY(-30%);
+                @include mx(.5rem);
+                @include pseudo-icon('./images/icon-error.svg', red, 'false');
+                opacity: 1;
+            }
+
+            & ~ button{
+                @include py(.5rem);
+
+                &:hover{
+                    @include py(.5rem);
+                }
+            }
+        }
+
+        input{
+            @include px(1rem);
+            @include py(.75rem);
+            background-color: white;
+            @include no-border(.25rem);
+            @include font(1rem, lt);
+            width: 100%;
+            
+            @include big{
+                @include font(1rem, lt);
+            }
+
+            @include md{
+                @include font(1rem, lt);
+            }
+        }
+
+        @include big{
+            width: 50%;
+        }
+    }
+
+    button{
+        @include px(1.5rem);
+        @include py(.65rem);
+        background-color: $soft-red;
+        color: white;
+        @include no-border(.25rem);
+        @include font(1rem, lt);
+        max-height: 2.75rem;
+        text-align: center;
+        transition: color .5s ease-out 10ms;
+
+        &:hover{
+            @include py(.5rem);
+            @include border-solid(2px);
+            border-color: $soft-red;
+            color: $soft-red;
+            background-color: white;
+        }
+
+        @include big{
+            width: max-content;
+        }
+    }
+    
+    @include big{
+        flex-direction: row;
+        justify-content: center;
+        @include center-stuff(50%);
+    }
+}
