@@ -33,7 +33,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Forntendmentor solution page](https://your-solution-url.com)
-- Live Site URL: [Live site URL](https://github.io/frontendmentor_bookmark-landing-page)
+- Live Site URL: [Live site URL](https://https://opeoluwa-ogunlaja.github.io/frontendmentor_bookmark-landing-page)
 
 ## My process
 
