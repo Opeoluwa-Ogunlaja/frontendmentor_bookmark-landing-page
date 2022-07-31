@@ -45,7 +45,7 @@ Users should be able to:
 
 ### Continued development
 
-Still have a lot to develop 🙃. Please, you can help. It's just a fok away
+Still have a lot to develop 🙃. Please, you can help. It's just a fork away
 
 
 ## Author
